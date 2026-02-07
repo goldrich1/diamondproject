@@ -1,1 +1,855 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Network Mentorship System | Transform Your Future</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --dark-blue: #0a2540;
+            --gold: #d4af37;
+            --light-gold: #e6c96e;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --gray: #6c757d;
+            --dark-gray: #343a40;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark-blue);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-decoration: none;
+        }
+                .logo span {
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #1a3a5f 100%);
+            color: var(--white);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-btn {
+            background: var(--gold);
+            color: var(--dark-blue);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        /* Problem & Solution Sections */
+        .problem, .solution {
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: var(--gray);
+            max-width: 700px;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: var(--white);            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--gold);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .card p {
+            color: var(--gray);
+        }
+        
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(10, 37, 64, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+            font-size: 24px;
+        }
+        
+        /* Who This Is For */
+        .who-for {
+            background-color: var(--light-gray);
+        }
+        
+        .comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .comparison-column {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .for-header {
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            font-weight: 700;
+            margin: -30px -30px 20px -30px;
+        }
+        
+        .not-for-header {
+            background: #e9ecef;
+            color: var(--dark-gray);
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            font-weight: 700;
+            margin: -30px -30px 20px -30px;
+        }
+        
+        .check-list, .cross-list {
+            list-style: none;
+        }
+        
+        .check-list li, .cross-list li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .cross-list li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            top: 10px;            color: #dc3545;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        /* What You'll Learn */
+        .learn-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .learn-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .learn-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .learn-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(10, 37, 64, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--dark-blue);
+            font-size: 32px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(to bottom, var(--white) 0%, var(--light-gray) 100%);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;        }
+        
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-weight: bold;
+        }
+        
+        /* Registration Form */
+        .form-container {
+            background: var(--white);
+            border-radius: 16px;            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        /* Final CTA */
+        .final-cta {            background: linear-gradient(135deg, var(--dark-blue) 0%, #1a3a5f 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .final-cta h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+                /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+            
+            .final-cta p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">GNMS<span>.</span></a>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Future Through Global Mentorship</h1>
+                <p>Join thousands who have unlocked new income streams and career opportunities through our proven mentorship system - even with zero experience.</p>
+                <a href="#register" class="btn hero-btn">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section problem">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">The Modern Income Challenge</h2>
+            <p class="section-subtitle animate-on-scroll">Most people struggle with these critical issues:</p>
+            
+            <div class="card-grid">
+                <div class="card animate-on-scroll">
+                    <div class="icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Stagnant Income</h3>
+                    <p>Salaries haven't kept up with inflation. Traditional paths to financial growth are blocked for most people.</p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="icon">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <h3>Time Leverage</h3>
+                    <p>Trading time for money is a losing game. Without systems, you can't scale your efforts or income.</p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Limited Networks</h3>
+                    <p>Your opportunities are limited by who you know. Most people lack access to valuable professional networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section solution">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Proven Solution</h2>            <p class="section-subtitle animate-on-scroll">The Global Network Mentorship System combines two powerful forces:</p>
+            
+            <div class="card-grid">
+                <div class="card animate-on-scroll">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Global Network Access</h3>
+                    <p>Connect with professionals, entrepreneurs, and mentors across 50+ countries in our exclusive network.</p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Personalized Mentorship</h3>
+                    <p>Get 1-on-1 guidance from experienced mentors who have achieved what you want to accomplish.</p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Actionable Systems</h3>
+                    <p>Implement proven frameworks that create multiple income streams without prior experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="section who-for">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">Who This Is For (And Not For)</h2>
+            <p class="section-subtitle text-center animate-on-scroll">This program is designed for specific people ready for transformation:</p>
+            
+            <div class="comparison">
+                <div class="comparison-column">
+                    <div class="for-header">Perfect For You If...</div>
+                    <ul class="check-list">
+                        <li>You're a student seeking career direction</li>
+                        <li>You're a professional wanting more income</li>
+                        <li>You're looking for post-retirement purpose</li>
+                        <li>You have zero experience but high motivation</li>
+                        <li>You value learning from others' experiences</li>
+                        <li>You're ready to take consistent action</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-column">                    <div class="not-for-header">Not For You If...</div>
+                    <ul class="cross-list">
+                        <li>You expect instant results without effort</li>
+                        <li>You're not open to new perspectives</li>
+                        <li>You believe you already know everything</li>
+                        <li>You're unwilling to connect with others</li>
+                        <li>You want a "get rich quick" scheme</li>
+                        <li>You're not ready to invest in yourself</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">What You'll Learn</h2>
+            <p class="section-subtitle text-center animate-on-scroll">Our comprehensive program covers essential skills for modern success:</p>
+            
+            <div class="learn-items">
+                <div class="learn-item animate-on-scroll">
+                    <div class="learn-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Relationship Building</h3>
+                    <p>Master the art of authentic networking that creates lifelong opportunities.</p>
+                </div>
+                
+                <div class="learn-item animate-on-scroll">
+                    <div class="learn-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Income Diversification</h3>
+                    <p>Build multiple streams of income that work while you sleep.</p>
+                </div>
+                
+                <div class="learn-item animate-on-scroll">
+                    <div class="learn-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mindset Mastery</h3>
+                    <p>Develop the entrepreneurial mindset needed for long-term success.</p>
+                </div>
+                
+                <div class="learn-item animate-on-scroll">
+                    <div class="learn-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Global Opportunities</h3>                    <p>Access international markets and opportunities beyond your local area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">Success Stories</h2>
+            <p class="section-subtitle text-center animate-on-scroll">Hear from our community members:</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">"As a recent graduate with no connections, GNMS connected me with mentors who helped me land my dream job in Singapore. The income I've generated has changed my family's future."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div>
+                            <strong>Sarah Johnson</strong>
+                            <div>Student, USA</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">"After 30 years in corporate, I felt stuck. Through GNMS, I built a consulting business that now earns more than my salary ever did. The mentorship was invaluable."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div>
+                            <strong>Michael Rodriguez</strong>
+                            <div>Professional, Spain</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">"At 68, I thought my earning days were over. GNMS showed me how to leverage my experience into a thriving online business. I'm more fulfilled now than ever before!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EP</div>
+                        <div>
+                            <strong>Eleanor Peterson</strong>
+                            <div>Retiree, Canada</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->    <section class="section" id="register">
+        <div class="container">
+            <h2 class="section-title text-center animate-on-scroll">Start Your Journey Today</h2>
+            <p class="section-subtitle text-center animate-on-scroll">Join our next business presentation and discover how GNMS can transform your future</p>
+            
+            <div class="form-container">
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp Phone Number</label>
+                        <input type="tel" id="whatsapp" class="form-control" placeholder="Include country code (e.g. +1234567890)" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" class="form-control" required>
+                            <option value="">Select your country</option>
+                            <option value="USA">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="AU">Australia</option>
+                            <option value="DE">Germany</option>
+                            <option value="FR">France</option>
+                            <option value="JP">Japan</option>
+                            <option value="BR">Brazil</option>
+                            <option value="IN">India</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ageRange">Age Range</label>
+                        <select id="ageRange" class="form-control" required>
+                            <option value="">Select your age range</option>
+                            <option value="18-24">18-24</option>
+                            <option value="25-34">25-34</option>
+                            <option value="35-44">35-44</option>
+                            <option value="45-54">45-54</option>
+                            <option value="55-64">55-64</option>
+                            <option value="65+">65+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">Reason for Interest</label>
+                        <select id="reason" class="form-control" required>                            <option value="">Select your primary reason</option>
+                            <option value="career">Career Advancement</option>
+                            <option value="income">Additional Income</option>
+                            <option value="skills">Skill Development</option>
+                            <option value="networking">Networking Opportunities</option>
+                            <option value="retirement">Post-Retirement Options</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn submit-btn">Reserve My Spot Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Transform Your Future?</h2>
+            <p>Join our next live business presentation to see exactly how GNMS works and how it can benefit you personally.</p>
+            <a href="#register" class="btn">Secure Your Spot Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Global Network Mentorship System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Form submission handler
+            const form = document.getElementById('leadForm');
+            if (form) {                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const fullName = document.getElementById('fullName').value;
+                    const whatsapp = document.getElementById('whatsapp').value;
+                    const country = document.getElementById('country').value;
+                    const ageRange = document.getElementById('ageRange').value;
+                    const reason = document.getElementById('reason').value;
+                    
+                    // Create WhatsApp message
+                    const message = `Hello! I'm interested in the Global Network Mentorship System. Here are my details:%0A%0AName: ${fullName}%0ACountry: ${country}%0AAge Range: ${ageRange}%0AReason: ${reason}`;
+                    
+                    // Redirect to WhatsApp
+                    window.location.href = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${message}`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
